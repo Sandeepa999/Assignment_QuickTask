@@ -1,0 +1,38 @@
+﻿@model List<QuickTask.Web.Models.Domain.Job>
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>All Task</h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    @if(Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Task Id</th>
+                    <th>Task Title</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var task in Model)
+                {
+                    <tr>
+                        <td>@task.TaskId</td>
+                        <td>@task.Title</td>
+                        <td>@task.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No Task Found!</p>
+    }
+</div>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickTask.Web", "QuickTask.Web\QuickTask.Web.csproj", "{21E61A31-C9DE-427D-AF08-7EDF0959744E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21E61A31-C9DE-427D-AF08-7EDF0959744E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21E61A31-C9DE-427D-AF08-7EDF0959744E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21E61A31-C9DE-427D-AF08-7EDF0959744E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21E61A31-C9DE-427D-AF08-7EDF0959744E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7AAC283-5061-47E6-BB1C-1E3B4EB4E9C9}
+	EndGlobalSection
+EndGlobal
