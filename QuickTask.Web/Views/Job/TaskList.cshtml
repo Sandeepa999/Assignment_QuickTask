@@ -17,6 +17,7 @@
                     <th>Task Id</th>
                     <th>Task Title</th>
                     <th>Description</th>
+                    <th> </th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,10 @@
                         <td>@task.TaskId</td>
                         <td>@task.Title</td>
                         <td>@task.Description</td>
+                        <td>
+                            <button class="btn btn-primary" asp-controller="Job" asp-action="TaskEdit" asp-route-id="@task.TaskId">Edit</button>
+                            <button class="btn btn-danger" asp-controller="Job" asp-action="TaskDelete" asp-route-id="@task.TaskId">Delete</button>
+                        </td>
                     </tr>
                 }
             </tbody>
