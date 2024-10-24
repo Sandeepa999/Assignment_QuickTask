@@ -5,7 +5,7 @@ namespace QuickTask.Web.Data
 {
     public class QuickTaskDbContext : DbContext
     {
-        public QuickTaskDbContext(DbContextOptions options) : base(options)
+        public QuickTaskDbContext(DbContextOptions<QuickTaskDbContext> options) : base(options)
         {
         }
         public DbSet<Job> Jobs { get; set; }
