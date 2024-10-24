@@ -52,7 +52,7 @@ namespace QuickTask.Web.Controllers
 
             if (signInResult != null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("TaskList", "Job");
             }
             return View();
         }

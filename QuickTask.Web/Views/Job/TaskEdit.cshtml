@@ -9,24 +9,32 @@
 </div>
 
 <div class="container py-5">
-    <form method="post">
-        <div class="mb-3">
-            <label class="form-label">Task Id</label>
-            <input type="text" id="taskid" class="form-control" asp-for="TaskId" readonly />
-        </div>
+    @if (Model != null)
+    {
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Task Id</label>
+                <input type="text" id="taskid" class="form-control" asp-for="TaskId" readonly />
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Task Title</label>
-            <input type="text" id="title" class="form-control" asp-for="Title" />
-        </div>
+            <div class="mb-3">
+                <label class="form-label">Task Title</label>
+                <input type="text" id="title" class="form-control" asp-for="Title" />
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Description</label>
-            <input type="text" id="description" class="form-control" asp-for="Description" />
-        </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <input type="text" id="description" class="form-control" asp-for="Description" />
+            </div>
 
-        <div class="mb-3">
-            <button type="submit" class="btn btn-dark">Update</button>
-        </div>
-    </form>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-dark">Update</button>
+            </div>
+        </form>
+    }
+    else
+    {
+        <p>Task Not Found!</p>
+    }
+
 </div>

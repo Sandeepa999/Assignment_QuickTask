@@ -22,9 +22,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Menu
@@ -44,11 +41,7 @@
                             </div>
                             <a class="btn me-3 bg-light text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                         }
-                        else
-                        {
-                            <a class="btn me-3 bg-light text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                            <a class="btn me-3 bg-light text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-                        }
+                       
                     </div>
                 </div>
             </div>
@@ -62,7 +55,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - QuickTask.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - QuickTask.com - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

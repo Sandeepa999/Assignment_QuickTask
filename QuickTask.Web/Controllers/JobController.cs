@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using QuickTask.Web.Data;
 using QuickTask.Web.Models.Domain;
 using QuickTask.Web.Models.ViewModels;
@@ -23,30 +24,30 @@ namespace QuickTask.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddTask(AddTaskRequest addTaskRequest)
+        public async Task<IActionResult> AddTask(AddTaskRequest addTaskRequest)
         {
             var job = new Job
             {
                 Title = addTaskRequest.Title,
                 Description = addTaskRequest.Description
             };
-            quickTaskDbContext.Jobs.Add(job);
-            quickTaskDbContext.SaveChanges();
+            await quickTaskDbContext.Jobs.AddAsync(job);
+            await quickTaskDbContext.SaveChangesAsync();
 
             return RedirectToAction("TaskList");
         }
 
         [HttpGet]
-        public IActionResult TaskList()
+        public async Task<IActionResult> TaskList()
         {
-            var jobs = quickTaskDbContext.Jobs.ToList();
+            var jobs = await quickTaskDbContext.Jobs.ToListAsync();
             return View(jobs);
         }
 
         [HttpGet]
-        public IActionResult TaskEdit(Guid id)
+        public async Task<IActionResult> TaskEdit(Guid id)
         {
-            var job = quickTaskDbContext.Jobs.FirstOrDefault(x => x.TaskId == id);
+            var job = await quickTaskDbContext.Jobs.FirstOrDefaultAsync(x => x.TaskId == id);
             if (job != null)
             {
                 var editTaskRequest = new EditTaskRequest
@@ -61,7 +62,7 @@ namespace QuickTask.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult TaskEdit(EditTaskRequest editTaskRequest)
+        public async Task<IActionResult> TaskEdit(EditTaskRequest editTaskRequest)
         {
             var job = new Job
             {
@@ -69,14 +70,14 @@ namespace QuickTask.Web.Controllers
                 Title = editTaskRequest.Title,
                 Description = editTaskRequest.Description
             };
-            var existingTask = quickTaskDbContext.Jobs.Find(job.TaskId);
+            var existingTask = await quickTaskDbContext.Jobs.FindAsync(job.TaskId);
 
             if (existingTask != null)
             {
                 existingTask.Title = job.Title;
                 existingTask.Description = job.Description;
 
-                quickTaskDbContext.SaveChanges();
+                await quickTaskDbContext.SaveChangesAsync();
                 return RedirectToAction("TaskList");
             }
 
@@ -85,14 +86,14 @@ namespace QuickTask.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult TaskDelete(Guid id)
+        public async Task<IActionResult> TaskDelete(Guid id)
         {
-            var job = quickTaskDbContext.Jobs.FirstOrDefault(x => x.TaskId == id);
+            var job = await quickTaskDbContext.Jobs.FirstOrDefaultAsync(x => x.TaskId == id);
 
             if (job != null)
             {
                 quickTaskDbContext.Jobs.Remove(job);
-                quickTaskDbContext.SaveChanges();
+                await quickTaskDbContext.SaveChangesAsync();
                 return RedirectToAction("TaskList");
             }
 
