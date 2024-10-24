@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using QuickTask.Web.Data;
@@ -9,6 +10,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<QuickTaskDbContext>(Options =>
 Options.UseSqlServer(builder.Configuration.GetConnectionString("TaskDbConnection")));
+
+builder.Services.AddDbContext<AuthDbContext>(Options =>
+Options.UseSqlServer(builder.Configuration.GetConnectionString("TaskAuthDbConnection")));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
+
 
 var app = builder.Build();
 
@@ -25,6 +32,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

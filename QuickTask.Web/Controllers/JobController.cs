@@ -86,8 +86,12 @@ namespace QuickTask.Web.Controllers
         {
             var job = quickTaskDbContext.Jobs.FirstOrDefault(x => x.TaskId == id);
 
-            quickTaskDbContext.Jobs.Remove(job);
-            quickTaskDbContext.SaveChanges();
+            if (job != null)
+            {
+                quickTaskDbContext.Jobs.Remove(job);
+                quickTaskDbContext.SaveChanges();
+                return RedirectToAction("TaskList");
+            }
             return RedirectToAction("TaskList");
 
         }

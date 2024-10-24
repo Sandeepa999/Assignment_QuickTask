@@ -28,8 +28,8 @@
                         <td>@task.Title</td>
                         <td>@task.Description</td>
                         <td>
-                            <button class="btn btn-primary" asp-controller="Job" asp-action="TaskEdit" asp-route-id="@task.TaskId">Edit</button>
-                            <button class="btn btn-danger" asp-controller="Job" asp-action="TaskDelete" asp-route-id="@task.TaskId">Delete</button>
+                            <a class="btn btn-primary" asp-controller="Job" asp-action="TaskEdit" asp-route-id="@task.TaskId">Edit</a>
+                            <a class="btn btn-danger" asp-controller="Job" asp-action="TaskDelete" asp-route-id="@task.TaskId">Delete</a>
                         </td>
                     </tr>
                 }
