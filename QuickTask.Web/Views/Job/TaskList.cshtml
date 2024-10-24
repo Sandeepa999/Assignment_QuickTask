@@ -29,7 +29,13 @@
                         <td>@task.Description</td>
                         <td>
                             <a class="btn btn-primary" asp-controller="Job" asp-action="TaskEdit" asp-route-id="@task.TaskId">Edit</a>
-                            <a class="btn btn-danger" asp-controller="Job" asp-action="TaskDelete" asp-route-id="@task.TaskId">Delete</a>
+
+                            <!--<button class="btn btn-danger" asp-controller="Job" asp-action="TaskDelete" asp-route-id="@task.TaskId">Delete</button>-->
+
+                            <form asp-controller="Job" asp-action="TaskDelete" asp-route-id="@task.TaskId" method="post" style="display:inline;">
+                                @Html.AntiForgeryToken() 
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 }

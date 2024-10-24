@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QuickTask.Web.Data;
 using QuickTask.Web.Models.Domain;
 using QuickTask.Web.Models.ViewModels;
 
 namespace QuickTask.Web.Controllers
 {
+    [Authorize]
     public class JobController : Controller
     {
         private readonly QuickTaskDbContext quickTaskDbContext;
@@ -82,6 +84,7 @@ namespace QuickTask.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult TaskDelete(Guid id)
         {
             var job = quickTaskDbContext.Jobs.FirstOrDefault(x => x.TaskId == id);
@@ -92,8 +95,9 @@ namespace QuickTask.Web.Controllers
                 quickTaskDbContext.SaveChanges();
                 return RedirectToAction("TaskList");
             }
-            return RedirectToAction("TaskList");
 
+            return RedirectToAction("TaskList");
         }
+
     }
 }
